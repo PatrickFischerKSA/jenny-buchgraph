@@ -1,0 +1,76 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Jenny – Buchgraph">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- ZENTRUM -->
+        <mxCell id="jenny" value="Jenny Meier&#10;– Protagonistin" style="ellipse;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="500" y="260" width="180" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- FIGUREN -->
+        <mxCell id="eduard" value="Eduard Meier&#10;Bruder / Arzt" style="rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="250" y="180" width="180" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="reinhard" value="Reinhard&#10;Lehrer / Liebe" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="760" y="180" width="200" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="joseph" value="Joseph Meier&#10;Zwangsehe" style="rounded=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="760" y="340" width="200" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="familie" value="Familie / Gesellschaft" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="250" y="340" width="220" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- MOTIVE -->
+        <mxCell id="motive" value="Motive&#10;• Selbstbestimmung&#10;• Liebe vs. Pflicht&#10;• Religion / Vernunft&#10;• Antisemitismus&#10;• Bildung" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="500" y="420" width="260" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- KAPITELCLUSTER -->
+        <mxCell id="k1" value="Block I&#10;Gesellschaft &amp; Milieu" style="rounded=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="80" y="60" width="220" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="k2" value="Block II&#10;Bildung &amp; Liebe" style="rounded=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="360" y="60" width="220" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="k3" value="Block III&#10;Konflikte" style="rounded=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="640" y="60" width="220" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="k4" value="Block IV&#10;Entscheidung" style="rounded=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="920" y="60" width="220" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- KANTEN -->
+        <mxCell id="e1" value="schützt / prägt" style="edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="eduard" target="jenny">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e2" value="Liebe / Bildung" style="edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="jenny" target="reinhard">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e3" value="Zwang / Ablehnung" style="edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="jenny" target="joseph">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e4" value="Erwartungen" style="edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="familie" target="jenny">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e5" value="prägt Konflikte" style="edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="motive" target="jenny">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
