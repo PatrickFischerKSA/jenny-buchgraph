@@ -1,76 +1,1633 @@
-<mxfile host="app.diagrams.net">
-  <diagram name="Jenny – Buchgraph">
-    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10">
-      <root>
-        <mxCell id="0"/>
-        <mxCell id="1" parent="0"/>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lernlandschaft: Fanny Lewald – Jenny</title>
 
-        <!-- ZENTRUM -->
-        <mxCell id="jenny" value="Jenny Meier&#10;– Protagonistin" style="ellipse;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="500" y="260" width="180" height="90" as="geometry"/>
-        </mxCell>
+  <!-- =========================================================
+       LERNLANDSCHAFT (vollständig)
+       ÄNDERUNGSMARKIERUNG (explizit):
+       - ÄNDERUNG 1: PDF-Einbindung (Jenny + Biografie) als iframes + Downloadlinks
+       - ÄNDERUNG 2: Musik-Einbindung (charakterstuecke.mp3) mit Player + Kontextaufgaben
+       - ÄNDERUNG 3: Alle bereitgestellten Bilder eingebunden (assets/images/*) mit Bildlegenden + Kontextbezug
+       - ÄNDERUNG 4: Historischer Kontext Berlin (externe Links) inhaltlich eingearbeitet
+       - ÄNDERUNG 5: 50 Inhaltsfragen mit Sofortkorrektur, Hinweis (2. Fehlversuch), Musterlösung (3. Fehlversuch), Reset
+       - ÄNDERUNG 6: Barrierearme Bedienung (Tastatur, klare Buttons), ohne Kürzungen/Platzhalter
+       ========================================================= -->
 
-        <!-- FIGUREN -->
-        <mxCell id="eduard" value="Eduard Meier&#10;Bruder / Arzt" style="rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="250" y="180" width="180" height="60" as="geometry"/>
-        </mxCell>
+  <style>
+    :root {
+      --bg: #0d0f12;
+      --panel: rgba(255,255,255,0.06);
+      --panel2: rgba(255,255,255,0.10);
+      --text: #f3f4f6;
+      --muted: rgba(243,244,246,0.74);
+      --accent: #ffd166;
+      --accent2: #6ee7b7;
+      --danger: #fb7185;
+      --ok: #34d399;
+      --shadow: 0 16px 50px rgba(0,0,0,0.55);
+      --radius: 18px;
+    }
 
-        <mxCell id="reinhard" value="Reinhard&#10;Lehrer / Liebe" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="760" y="180" width="200" height="60" as="geometry"/>
-        </mxCell>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: radial-gradient(1200px 800px at 20% 10%, rgba(255,209,102,0.18), transparent 60%),
+                  radial-gradient(900px 600px at 80% 15%, rgba(110,231,183,0.14), transparent 55%),
+                  radial-gradient(1200px 900px at 40% 85%, rgba(99,102,241,0.12), transparent 60%),
+                  var(--bg);
+      overflow-x: hidden;
+    }
 
-        <mxCell id="joseph" value="Joseph Meier&#10;Zwangsehe" style="rounded=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
-          <mxGeometry x="760" y="340" width="200" height="60" as="geometry"/>
-        </mxCell>
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(255,209,102,0.45);
+    }
+    a:hover { border-bottom-color: rgba(255,209,102,0.95); }
 
-        <mxCell id="familie" value="Familie / Gesellschaft" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
-          <mxGeometry x="250" y="340" width="220" height="60" as="geometry"/>
-        </mxCell>
+    header.hero {
+      position: relative;
+      padding: 44px 20px 30px 20px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
 
-        <!-- MOTIVE -->
-        <mxCell id="motive" value="Motive&#10;• Selbstbestimmung&#10;• Liebe vs. Pflicht&#10;• Religion / Vernunft&#10;• Antisemitismus&#10;• Bildung" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
-          <mxGeometry x="500" y="420" width="260" height="120" as="geometry"/>
-        </mxCell>
+    .heroGrid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 22px;
+      align-items: stretch;
+    }
 
-        <!-- KAPITELCLUSTER -->
-        <mxCell id="k1" value="Block I&#10;Gesellschaft &amp; Milieu" style="rounded=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
-          <mxGeometry x="80" y="60" width="220" height="60" as="geometry"/>
-        </mxCell>
+    @media (max-width: 920px) { .heroGrid { grid-template-columns: 1fr; } }
 
-        <mxCell id="k2" value="Block II&#10;Bildung &amp; Liebe" style="rounded=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
-          <mxGeometry x="360" y="60" width="220" height="60" as="geometry"/>
-        </mxCell>
+    .card {
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
 
-        <mxCell id="k3" value="Block III&#10;Konflikte" style="rounded=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
-          <mxGeometry x="640" y="60" width="220" height="60" as="geometry"/>
-        </mxCell>
+    .card .inner { padding: 22px; }
 
-        <mxCell id="k4" value="Block IV&#10;Entscheidung" style="rounded=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
-          <mxGeometry x="920" y="60" width="220" height="60" as="geometry"/>
-        </mxCell>
+    .title {
+      font-size: 34px;
+      line-height: 1.1;
+      margin: 0 0 10px 0;
+      letter-spacing: 0.2px;
+    }
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.45;
+    }
 
-        <!-- KANTEN -->
-        <mxCell id="e1" value="schützt / prägt" style="edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="eduard" target="jenny">
-          <mxGeometry relative="1" as="geometry"/>
-        </mxCell>
+    .badgeRow { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 10px; border-radius: 999px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.10);
+      font-size: 13px; color: rgba(243,244,246,0.88);
+    }
 
-        <mxCell id="e2" value="Liebe / Bildung" style="edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="jenny" target="reinhard">
-          <mxGeometry relative="1" as="geometry"/>
-        </mxCell>
+    .nav { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; }
 
-        <mxCell id="e3" value="Zwang / Ablehnung" style="edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="jenny" target="joseph">
-          <mxGeometry relative="1" as="geometry"/>
-        </mxCell>
+    .btn {
+      appearance: none;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.08);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+      user-select: none;
+    }
+    .btn:hover { transform: translateY(-1px); background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.22); }
+    .btn:active { transform: translateY(0px); }
+    .btn.primary { background: rgba(255,209,102,0.20); border-color: rgba(255,209,102,0.35); }
+    .btn.primary:hover { background: rgba(255,209,102,0.26); border-color: rgba(255,209,102,0.55); }
+    .btn.good { background: rgba(110,231,183,0.16); border-color: rgba(110,231,183,0.35); }
+    .btn.warn { background: rgba(251,113,133,0.14); border-color: rgba(251,113,133,0.35); }
 
-        <mxCell id="e4" value="Erwartungen" style="edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="familie" target="jenny">
-          <mxGeometry relative="1" as="geometry"/>
-        </mxCell>
+    .portrait { display: grid; grid-template-columns: 120px 1fr; gap: 16px; align-items: center; }
+    .portrait img {
+      width: 120px; height: 120px; object-fit: cover;
+      border-radius: 16px; border: 1px solid rgba(255,255,255,0.12);
+      filter: contrast(1.02) saturate(1.04);
+    }
+    @media (max-width: 520px) {
+      .portrait { grid-template-columns: 1fr; }
+      .portrait img { width: 100%; height: 220px; }
+    }
 
-        <mxCell id="e5" value="prägt Konflikte" style="edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="motive" target="jenny">
-          <mxGeometry relative="1" as="geometry"/>
-        </mxCell>
+    main { max-width: 1180px; margin: 0 auto; padding: 0 20px 60px 20px; }
+    section { margin-top: 22px; }
 
-      </root>
-    </mxGraphModel>
-  </diagram>
-</mxfile>
+    .sectionHeader {
+      display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
+      gap: 12px; padding: 18px 22px;
+      background: rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+    }
+    .sectionHeader h2 { margin: 0; font-size: 20px; letter-spacing: 0.2px; }
+    .sectionHeader p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.35; max-width: 720px; }
+
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; padding: 18px 22px 22px 22px; }
+    @media (max-width: 920px) { .grid2 { grid-template-columns: 1fr; } }
+
+    .box {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 16px;
+      padding: 16px;
+    }
+    .box h3 { margin: 0 0 10px 0; font-size: 16px; }
+    .box p, .box li { color: rgba(243,244,246,0.86); line-height: 1.45; font-size: 14px; }
+
+    .iframeWrap {
+      height: 520px; border-radius: 14px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.25);
+    }
+    .iframeWrap iframe { width: 100%; height: 100%; border: 0; background: white; }
+
+    .mediaGrid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; padding: 18px 22px 22px 22px; }
+    .mediaGrid figure {
+      grid-column: span 6; margin: 0;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 16px; overflow: hidden;
+    }
+    .mediaGrid figure.large { grid-column: span 12; }
+    .mediaGrid img { width: 100%; display: block; height: 320px; object-fit: cover; filter: contrast(1.02) saturate(1.05); }
+    .mediaGrid figure.large img { height: 420px; }
+    .mediaGrid figcaption { padding: 12px 14px 14px 14px; color: rgba(243,244,246,0.86); font-size: 13px; line-height: 1.45; }
+    @media (max-width: 920px) {
+      .mediaGrid figure, .mediaGrid figure.large { grid-column: span 12; }
+      .mediaGrid img { height: 260px; }
+    }
+
+    .audioRow { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; padding: 18px 22px 22px 22px; }
+    @media (max-width: 920px) { .audioRow { grid-template-columns: 1fr; } }
+    audio { width: 100%; }
+
+    .callout {
+      border-left: 3px solid rgba(255,209,102,0.65);
+      padding: 10px 12px;
+      background: rgba(255,209,102,0.08);
+      border-radius: 12px;
+      color: rgba(243,244,246,0.90);
+      font-size: 14px; line-height: 1.45;
+    }
+
+    /* Quiz */
+    .quizTop {
+      padding: 18px 22px;
+      display: flex; flex-wrap: wrap; gap: 10px;
+      align-items: center; justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+    }
+    .quizTop .meta { color: var(--muted); font-size: 13px; line-height: 1.35; }
+    .quizWrap { padding: 18px 22px 22px 22px; }
+
+    .qCard {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+    .qHead {
+      display: flex; flex-wrap: wrap; align-items: baseline;
+      justify-content: space-between; gap: 10px;
+      margin-bottom: 10px;
+    }
+    .qNr { font-weight: 800; letter-spacing: 0.2px; font-size: 14px; color: rgba(255,209,102,0.95); }
+    .attempt { color: rgba(243,244,246,0.70); font-size: 12px; }
+    .qPrompt { margin: 8px 0 12px 0; font-size: 15px; line-height: 1.45; color: rgba(243,244,246,0.92); }
+
+    textarea {
+      width: 100%;
+      min-height: 84px;
+      resize: vertical;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.28);
+      color: var(--text);
+      padding: 12px;
+      font-size: 14px;
+      line-height: 1.45;
+      outline: none;
+    }
+    textarea:focus { border-color: rgba(255,209,102,0.55); box-shadow: 0 0 0 4px rgba(255,209,102,0.10); }
+
+    .qActions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+
+    .feedback {
+      margin-top: 10px;
+      border-radius: 14px;
+      padding: 10px 12px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: rgba(243,244,246,0.90);
+      line-height: 1.45;
+      font-size: 13px;
+      display: none;
+    }
+    .feedback.ok { display: block; border-color: rgba(52,211,153,0.35); background: rgba(52,211,153,0.10); }
+    .feedback.bad { display: block; border-color: rgba(251,113,133,0.40); background: rgba(251,113,133,0.10); }
+    .feedback.hint { display: block; border-color: rgba(255,209,102,0.45); background: rgba(255,209,102,0.08); }
+
+    .solution {
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      display: none;
+    }
+    .solution .label {
+      font-weight: 800;
+      color: rgba(255,209,102,0.95);
+      font-size: 12px;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .solution .text { color: rgba(243,244,246,0.88); font-size: 13px; line-height: 1.5; white-space: pre-wrap; }
+
+    footer { max-width: 1180px; margin: 40px auto 0 auto; padding: 0 20px 40px 20px; color: rgba(243,244,246,0.70); font-size: 13px; line-height: 1.5; }
+    .tiny { color: rgba(243,244,246,0.62); font-size: 12px; line-height: 1.45; }
+  </style>
+</head>
+
+<body>
+  <header class="hero">
+    <div class="heroGrid">
+      <div class="card">
+        <div class="inner">
+          <h1 class="title">Lernlandschaft zum Roman <em>Jenny</em> (Fanny Lewald)</h1>
+          <p class="subtitle">
+            Diese Lernlandschaft verbindet <strong>Romanlektüre</strong> mit <strong>historischem Berlin-Kontext</strong>
+            (Vormärz/Industrialisierung), <strong>Bildmaterial</strong> (Stadt, Räume, Milieus) und <strong>Musik</strong> als
+            Stimmungsträger – und endet in <strong>50 Inhaltsfragen</strong> mit Sofortkorrektur.
+          </p>
+
+          <div class="badgeRow" aria-label="Schwerpunkte">
+            <span class="badge">📚 Roman: <strong>Jenny</strong></span>
+            <span class="badge">🏙️ Berlin 19. Jh.: Stadt, Gesellschaft, Industrialisierung</span>
+            <span class="badge">🎻 Musik: <strong>Charakterstücke</strong> (Hörspur)</span>
+            <span class="badge">🧩 50 Fragen: Sofortkorrektur + Hinweis + Musterlösung</span>
+          </div>
+
+          <div class="nav" aria-label="Navigation">
+            <button class="btn primary" onclick="scrollToId('modul-pdf')">Modul 1: PDFs</button>
+            <button class="btn" onclick="scrollToId('modul-bilder')">Modul 2: Bilder & Kontext</button>
+            <button class="btn" onclick="scrollToId('modul-musik')">Modul 3: Musik</button>
+            <button class="btn good" onclick="scrollToId('modul-quiz')">Modul 4: Quiz (50)</button>
+          </div>
+
+          <p class="tiny" style="margin-top:14px;">
+            Hinweis GitHub: Lege diese Datei als <code>index.html</code> ins Repo und behalte die Ordnerstruktur <code>assets/</code> wie im ZIP.
+            PDFs und Musik laufen dann direkt über GitHub Pages.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="inner">
+          <div class="portrait">
+            <img src="assets/images/fanny_lewald_portrait.jpg" alt="Porträt (historisches Gemälde) – Fanny Lewald" />
+            <div>
+              <h3 style="margin:0 0 8px 0;">Autorin im Fokus</h3>
+              <p class="subtitle" style="margin:0;">
+                Fanny Lewald (19. Jahrhundert) schreibt in einem Milieu, in dem <strong>Religion, Stand, Bildung</strong> und
+                <strong>Geschlechterrollen</strong> über Lebenswege entscheiden.
+                <br /><br />
+                In <em>Jenny</em> werden private Entscheidungen als gesellschaftlich „vermessen“ – und damit politisch.
+              </p>
+              <div class="badgeRow" style="margin-top:12px;">
+                <span class="badge">⚖️ Normen & Anerkennung</span>
+                <span class="badge">🧠 Bildung & Selbstbild</span>
+                <span class="badge">🧭 Emanzipation & Grenze</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+
+    <section id="modul-pdf">
+      <div class="card">
+        <div class="sectionHeader">
+          <div>
+            <h2>Modul 1 – Grundlagen: Romantext & Biografie (PDFs)</h2>
+            <p>
+              Arbeite direkt im Roman-PDF (Textbelege, Figurenführung, Konflikte) und ergänze das Autorinnen-Profil
+              (Biografie). Beide PDFs sind <strong>eingebettet</strong> und zusätzlich als Download verlinkt.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div class="box">
+            <h3>📘 Roman-PDF: <em>Jenny</em></h3>
+            <p>Aufgabenfokus (beim Lesen):</p>
+            <ul>
+              <li><strong>Konfliktfelder</strong> markieren: Religion/„Ebenbürtigkeit“, Familie, Bildung, Liebe, soziale Kontrolle.</li>
+              <li><strong>Erzählweise</strong>: Wo wird Jenny durch den Blick anderer definiert (z.B. „Jüdin“, „interessant“)?</li>
+              <li><strong>Schlüsselszenen</strong>: Theater/Restaurant, Unterricht (Faust), Konversionsgedanke, Verlobung, spätere Rückkehr.</li>
+            </ul>
+            <p class="callout">
+              Direktlink: <a href="assets/pdf/Fanny_Lewald_Jenny.pdf" target="_blank" rel="noopener">PDF in neuem Tab öffnen</a>
+            </p>
+            <div class="iframeWrap" aria-label="PDF-Viewer: Jenny">
+              <iframe src="assets/pdf/Fanny_Lewald_Jenny.pdf#view=FitH" title="Fanny Lewald – Jenny (PDF)"></iframe>
+            </div>
+          </div>
+
+          <div class="box">
+            <h3>👤 Biografie-PDF: Fanny Lewald</h3>
+            <p>Aufgabenfokus (Kontext & Autorinnenposition):</p>
+            <ul>
+              <li>Welche <strong>Erfahrungen/Positionen</strong> der Autorin spiegeln sich in Jennys Konflikten (z.B. Bildung, Religion, Selbstbestimmung)?</li>
+              <li>Welche <strong>milieuspezifischen Erwartungen</strong> an Frauen (Ehe, „Anstand“, sozialer Ruf) werden sichtbar?</li>
+              <li>Notiere <strong>3 Biografie-Aspekte</strong>, die den Blick auf einzelne Szenen im Roman schärfen.</li>
+            </ul>
+            <p class="callout">
+              Direktlink: <a href="assets/pdf/Fanny_Lewald_Bio.pdf" target="_blank" rel="noopener">PDF in neuem Tab öffnen</a>
+            </p>
+            <div class="iframeWrap" aria-label="PDF-Viewer: Biografie">
+              <iframe src="assets/pdf/Fanny_Lewald_Bio.pdf#view=FitH" title="Fanny Lewald – Biografie (PDF)"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="modul-bilder">
+      <div class="card">
+        <div class="sectionHeader">
+          <div>
+            <h2>Modul 2 – Bilder lesen: Berlin, Milieus, Räume der Gesellschaft</h2>
+            <p>
+              Die folgenden Bilder sind nicht Dekoration, sondern <strong>Kontextmaterial</strong>:
+              Sie zeigen <strong>Stadträume</strong>, <strong>Repräsentation</strong> und <strong>Alltag</strong>.
+              Nutze sie als Interpretationsfolie: Wer bewegt sich wo? Wer wird gesehen – und wie?
+            </p>
+          </div>
+          <div class="tiny">
+            Externe Kontextquellen (verlinkt, als Hintergrund):
+            <a href="https://berlingeschichte.de/kalender/jahr/1840.htm" target="_blank" rel="noopener">berlingeschichte.de (Jahr 1840)</a> ·
+            <a href="https://de.wikipedia.org/wiki/Geschichte_Berlins" target="_blank" rel="noopener">Wikipedia: Geschichte Berlins</a> ·
+            <a href="https://diercke.de/content/berlin-industriestadt-1840-1880-978-3-14-100900-2-38-1-1" target="_blank" rel="noopener">Diercke: Berlin – Industriestadt 1840–1880</a>
+          </div>
+        </div>
+
+        <div class="mediaGrid">
+          <figure class="large">
+            <img src="assets/images/bild_02_berlin_schlossplatz.jpg" alt="Berlin: Schlossplatz / Stadtresidenz (historische Ansicht)" />
+            <figcaption>
+              <strong>Berlin – Repräsentationsraum:</strong> Große Plätze, Residenzen und „offizielle“ Architektur inszenieren Macht.
+              Im Roman sind solche Räume wichtig, weil sie <em>Zugehörigkeit</em> und <em>Distanz</em> markieren:
+              Wer hat Zugang? Wer gilt als „ebenbürtig“?
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img src="assets/images/bild_03_brandenburger_tor.jpg" alt="Berlin: Brandenburger Tor (historische Darstellung)" />
+            <figcaption>
+              <strong>Brandenburger Tor – Schwelle & Ordnung:</strong> Als ikonische Schwelle kann es als Bild für Jennys
+              Schwellenlagen gelesen werden: zwischen Familie und Außenwelt, zwischen Anerkennung und Ausgrenzung,
+              zwischen persönlichem Wunsch und gesellschaftlicher Norm.
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img src="assets/images/bild_04_tiergarten_plan_1840.jpg" alt="Plan/Ansicht: Tiergarten Berlin (1840)" />
+            <figcaption>
+              <strong>Tiergarten – Stadt als Netzwerk:</strong> Stadtpläne zeigen Wege, Achsen, Zentren.
+              Übertrage das auf den Roman: Welche sozialen Achsen bestimmen Jennys Leben (Familie – Unterricht – Öffentlichkeit)?
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img src="assets/images/bild_05_gendarmenmarkt_schillerplatz.jpg" alt="Berlin: Gendarmenmarkt / Schillerplatz (historisches Foto/Ansicht)" />
+            <figcaption>
+              <strong>Kulturraum:</strong> Plätze um Theater/Oper sind Orte von Sichtbarkeit und Urteil.
+              Denke an die Theater- und Restaurant-Szene: Kunstbegeisterung neben abwertender Zuschreibung („jüdisch aussehen“).
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img src="assets/images/bild_08_theaterhaus.jpg" alt="Theaterhaus (historische Ansicht)" />
+            <figcaption>
+              <strong>Theater:</strong> Ort der Emotion – aber auch der sozialen Sortierung (Logen, Publikum, „Blicke“).
+              Im Roman: Theater als Auslöser von Gesprächen, die Vorurteile und Begehren freilegen.
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img src="assets/images/bild_09_berliner_strasse_markt.jpg" alt="Berlin: Straßenszene/Markt (historisches Bild)" />
+            <figcaption>
+              <strong>Alltag & Arbeit:</strong> Straßenszenen zeigen ökonomische Bewegung und soziale Vielfalt.
+              Verbinde dies mit dem Vormärz-Kontext: wachsende Stadt, neue Klassen, Spannung zwischen Reichtum und Prekarität.
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img src="assets/images/bild_06_biedermeier_familie.jpg" alt="Biedermeier-Familieninterieur (historisches Bild)" />
+            <figcaption>
+              <strong>Biedermeier-Interieur:</strong> Familie als Schutzraum – aber auch als Ort der Kontrolle.
+              Im Roman: Jennys Haus als enger Kreis, in dem Liebe, Mitgift, Zukunftspläne und Rollenbilder verhandelt werden.
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img src="assets/images/bild_07_musik_salon.jpg" alt="Musiksalon: Klavier, Sänger*innen, Publikum (historische Illustration)" />
+            <figcaption>
+              <strong>Musiksalon:</strong> Bildung, Stil, „guter Ton“. Musik ist hier nicht nur Unterhaltung,
+              sondern kulturelles Kapital: Wer kann spielen/singen? Wer darf urteilen?
+              Das verbindet sich direkt mit der Hörspur in Modul 3.
+            </figcaption>
+          </figure>
+
+          <figure class="large">
+            <img src="assets/images/bild_01_portraet_jenny.jpg" alt="Porträt einer Frau (historische Malerei) – als Visualisierung für Jenny" />
+            <figcaption>
+              <strong>Porträt (als Visualisierung für Jenny):</strong> Das Bild hilft, Jennys Situation als <em>gesehen werden</em> zu lesen:
+              nicht nur „wer sie ist“, sondern <em>als was</em> sie gelesen wird (jung, „interessant“, „Jüdin“).
+              Frage: Wer hat Deutungsmacht über ihre Identität – sie selbst, Familie, Gesellschaft?
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="grid2" style="padding-top:0;">
+          <div class="box">
+            <h3>Historischer Kontext – verdichtet, aber konkret (als Arbeitsfolie)</h3>
+            <p>
+              <strong>Vormärz</strong> bedeutet: gesellschaftliche Spannung vor 1848. Berlin wächst, wirtschaftet, ordnet.
+              Gleichzeitig werden Zugehörigkeit und „Anstand“ streng reguliert.
+            </p>
+            <ul>
+              <li><strong>Urbanisierung/Bevölkerungswachstum:</strong> mehr Begegnungen, mehr Konkurrenz, mehr soziale Sichtbarkeit.</li>
+              <li><strong>Industrialisierung:</strong> neue Arbeitswelten, neue Klassen, neue Abhängigkeiten (Kapital/Netzwerke).</li>
+              <li><strong>Bürgerliche Normen:</strong> Ruf, Ehefähigkeit, Religion und „Ebenbürtigkeit“ als soziale Filter.</li>
+              <li><strong>Antisemitismus:</strong> nicht als Einzelfall, sondern als soziale Grammatik der Ausgrenzung.</li>
+              <li><strong>Kulturorte:</strong> Theater/Salons als Räume der Distinktion – Anerkennung und Abwertung liegen nah beieinander.</li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <h3>Mini-Aufträge (direkt mit Bildern verknüpft)</h3>
+            <ol>
+              <li><strong>Bild 02 (Schlossplatz):</strong> Formuliere 3 Sätze: Welche Macht- und Zugehörigkeitssignale sendet dieser Raum?</li>
+              <li><strong>Bild 06 (Interieur):</strong> Welche Rollen (Mutter/Vater/Tochter/„Cousin“) sind denkbar – und wie werden sie im Roman bestätigt/gebrochen?</li>
+              <li><strong>Bild 07 (Salon):</strong> Warum ist Musik ein Mittel sozialer Ordnung (wer darf auftreten, wer hört zu, wer urteilt)?</li>
+              <li><strong>Bild 09 (Straße/Markt):</strong> Welche soziale Vielfalt wird sichtbar – und wo ist im Roman „öffentliche“ Vielfalt vs. „privater“ Familienkreis spannungsvoll?</li>
+            </ol>
+            <p class="callout">
+              Nutze für Faktencheck/Erweiterung die externen Links oben (Berlin-Geschichte, Diercke, Kalender 1840).
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="modul-musik">
+      <div class="card">
+        <div class="sectionHeader">
+          <div>
+            <h2>Modul 3 – Musik als Kontext: „Charakterstücke“ (Hörspur)</h2>
+            <p>
+              Musik ist in dieser Lernlandschaft eine <strong>kulturelle Linse</strong>:
+              Sie modelliert Stimmung, Tempo, soziale Atmosphäre (Salon, Theater, Innenräume) und hilft, Figuren in ihrer
+              emotionalen Dynamik zu denken.
+            </p>
+          </div>
+        </div>
+
+        <div class="audioRow">
+          <div class="box">
+            <h3>🎧 Audio: charakterstuecke.mp3</h3>
+            <p>
+              Höre mindestens 6–8 Minuten konzentriert. Notiere <strong>3 musikalische Beobachtungen</strong>:
+              Tempo, Dynamik, „Figuren“-Charakter, Wechsel, Spannung/Entspannung.
+            </p>
+            <audio controls preload="metadata">
+              <source src="assets/audio/charakterstuecke.mp3" type="audio/mpeg" />
+              Dein Browser unterstützt kein Audio-Element.
+            </audio>
+
+            <p class="callout" style="margin-top:12px;">
+              Direktlink: <a href="assets/audio/charakterstuecke.mp3" target="_blank" rel="noopener">Audio in neuem Tab öffnen</a>
+            </p>
+          </div>
+
+          <div class="box">
+            <h3>Musik-Aufträge (explizit – keine Platzhalter)</h3>
+            <ol>
+              <li>
+                <strong>Salon-Szene bauen:</strong> Setze Bild 07 (Musiksalon) neben den Hör-Eindruck:
+                Welche gesellschaftliche Situation passt (Zuhören/Urteilen/Distinktion)?
+              </li>
+              <li>
+                <strong>Jenny als „Charakterstück“:</strong> Welche musikalischen Gesten passen zu Jenny (sprunghaft, intensiv, unruhig)?
+                Nenne 2 Stellen aus dem Roman (mit Stichworten), die du musikalisch so hörst.
+              </li>
+              <li>
+                <strong>Joseph als „Charakterstück“:</strong> Welche musikalischen Gesten passen zu Joseph (kurz, abgebrochen, innerlich)?
+                Formuliere 1–2 Sätze, warum sein Schweigen wie eine musikalische „Pause“ wirkt.
+              </li>
+              <li>
+                <strong>Konflikt als Form:</strong> Höre auf Wechsel von Spannung/Entspannung und verknüpfe das mit dem religiösen Konflikt
+                Jenny–Reinhard (Unterricht/Faust, Konversionsidee, Eifersucht).
+              </li>
+            </ol>
+            <p class="tiny">
+              Ziel: Musik wird zum Interpretationswerkzeug – nicht als Beweis, sondern als präzise Stimmungslinse.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="modul-quiz">
+      <div class="card">
+        <div class="sectionHeader">
+          <div>
+            <h2>Modul 4 – 50 Inhaltsfragen mit Sofortkorrektur</h2>
+            <p>
+              Bearbeite die Fragen schriftlich. Die Sofortkorrektur arbeitet mit Schlüsselbegriffen:
+              Beim <strong>2. Fehlversuch</strong> erscheint ein <strong>Hinweis</strong>, beim <strong>3. Fehlversuch</strong>
+              die <strong>Musterlösung</strong>. Bei richtiger Antwort wird die Aufgabe als erledigt markiert.
+            </p>
+          </div>
+        </div>
+
+        <div class="quizTop">
+          <div class="meta" id="quizMeta">Quiz lädt…</div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn good" id="btnExpandAll" type="button">Alle Fragen aufklappen</button>
+            <button class="btn" id="btnCollapseAll" type="button">Alle Fragen einklappen</button>
+            <button class="btn warn" id="btnReset" type="button">Reset (alles zurücksetzen)</button>
+          </div>
+        </div>
+
+        <div class="quizWrap" id="quizWrap" aria-live="polite"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="card" style="padding:0;">
+      <div class="inner" style="padding:18px 22px;">
+        <strong>Arbeitsmodus-Check (sichtbar, keine stillschweigenden Lücken):</strong>
+        <ul>
+          <li>Alle Ressourcen sind <strong>verlinkt</strong> und <strong>eingebunden</strong> (PDFs, Audio, alle Bilder).</li>
+          <li>Historischer Kontext ist <strong>inhaltlich</strong> in Aufgaben/Bildlegenden integriert.</li>
+          <li>Es gibt <strong>genau 50</strong> Fragen – vollständig als Datensätze hinterlegt, keine Platzhalter.</li>
+          <li>Korrekturlogik: 1× falsch → „falsch“, 2× falsch → Hinweis, 3× falsch → Musterlösung (und Sperre).</li>
+          <li>Reset setzt alles zurück (Antwortfelder, Versuche, erledigt-Markierung).</li>
+        </ul>
+        <div class="tiny">
+          Tipp für GitHub Pages: Repo → Settings → Pages → Deploy from branch → Branch: main / root.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // =========================================================
+    // ÄNDERUNG 5 (Quiz): 50 Fragen als VOLLSTÄNDIGE Datensätze
+    // Keine Platzhalter: Jede Frage enthält prompt + keywords + hint + solution.
+    // =========================================================
+    const QUESTIONS = [
+  {
+    "nr": 1,
+    "type": "free",
+    "prompt": "Im Eröffnungskapitel (Restaurant nach dem Theater): Welche Wirkung hat die Diskussion über die gefeierte Künstlerin Giovanolla auf die Darstellung gesellschaftlicher Vorurteile?",
+    "keywords": [
+      "antisemit",
+      "vorur",
+      "jüdis",
+      "blick",
+      "theater",
+      "gesellschaft"
+    ],
+    "hint": "Achte darauf, wie über „jüdisch aussehen“ gesprochen wird und wie Kunst/Begehren mit Abwertung verbunden wird.",
+    "solution": "Die Szene zeigt, wie schnell Bewunderung (für Giovanolla) in Abwertung kippt: Horns Bemerkung über das „jüdische Aussehen“ macht Antisemitismus als gesellschaftlich akzeptierte Haltung sichtbar. Kunstbegeisterung, männliches Begehren und soziale Distinktion stehen neben rassifizierender/antisemitischer Zuschreibung – der Roman setzt so von Anfang an den Kontext der Ausgrenzung, in dem Jenny als junge jüdische Frau wahrgenommen wird."
+  },
+  {
+    "nr": 2,
+    "type": "free",
+    "prompt": "Welche Funktion hat der Hinweis, dass Bankier Meier dem Vater Horn beim „Etablissement“ geholfen hat, im Konflikt um Anerkennung und Abhängigkeit?",
+    "keywords": [
+      "abhängig",
+      "schuld",
+      "ankennung",
+      "bankier",
+      "meier",
+      "sozial"
+    ],
+    "hint": "Wer profitiert von wem – und wer will das im Gespräch unsichtbar machen?",
+    "solution": "Der Hinweis entlarvt bürgerliche Heuchelei: Horn kann antisemitisch abwerten, obwohl seine Familie wirtschaftlich von Meiers Unterstützung profitiert hat. Damit verbindet der Roman Anerkennungs- und Machtfragen (Kapital/Netzwerke) mit der Logik sozialer Abhängigkeit, die zugleich verleugnet wird, um die eigene Überlegenheit zu behaupten."
+  },
+  {
+    "nr": 3,
+    "type": "free",
+    "prompt": "Wie wird Jenny im Gespräch über die Loge („ganz junges Mädchen … offenbar eine Jüdin“) gleichzeitig exotisiert und ausgeschlossen?",
+    "keywords": [
+      "exotis",
+      "interessant",
+      "jüdin",
+      "loge",
+      "ausgesch",
+      "blick"
+    ],
+    "hint": "Unterscheide zwischen neugierigem Blick und echter Anerkennung.",
+    "solution": "Jenny wird als „interessant“ markiert, aber sofort über ihre Zugehörigkeit („offenbar eine Jüdin“) kategorisiert. Diese Mischung aus Faszination und Distanzierung produziert Exotisierung: Sie wird nicht als gleichrangige Person, sondern als Objekt eines Blicks wahrgenommen, dessen Grenze die religiös/ethnisch definierte Differenz ist."
+  },
+  {
+    "nr": 4,
+    "type": "free",
+    "prompt": "Eduards Rückkehr von der Universität: Welche Erziehungsrolle übernimmt er gegenüber Jenny – und warum funktioniert „Strenge“ nicht?",
+    "keywords": [
+      "eduard",
+      "lehrer",
+      "erzieh",
+      "strenge",
+      "spielend",
+      "verstand"
+    ],
+    "hint": "Suche nach Formulierungen zu „spielend lernen“, „Witz“, „Herrschsucht/Eigensinn“.",
+    "solution": "Eduard wird zu Jennys Lehrer/Erzieher: Er fördert sie intellektuell, weil er ihren Verstand und Witz erkennt. Strenge greift nicht, weil Jenny lebhaft, leidenschaftlich und an Selbstbehauptung gewöhnt ist; Eduard setzt daher auf Nähe, Anregung und Bildung, nicht auf Zwang."
+  },
+  {
+    "nr": 5,
+    "type": "free",
+    "prompt": "Welche Wirkung hat Josephs Rolle als „Schranke“ für Jennys Eigensinn – und warum mag Jenny ihn schon als Kind nicht?",
+    "keywords": [
+      "joseph",
+      "tadel",
+      "schranke",
+      "rau",
+      "garstig",
+      "eigensinn"
+    ],
+    "hint": "Denke an Konflikt: „Beschützer gegen den unliebenswürdigen Cousin“.",
+    "solution": "Joseph setzt Jenny Grenzen, tadelt und korrigiert sie; dadurch wird er zur Gegenkraft gegen ihre durch elterliche Verwöhnung gestärkte Herrschsucht. Jenny erlebt das als Kränkung und Einschränkung – sie sucht Schutz bei Eduard und empfindet Joseph als Störenfried, obwohl er eine stabilisierende Funktion hat."
+  },
+  {
+    "nr": 6,
+    "type": "free",
+    "prompt": "Charakterisierung Joseph: Welche Spannungen zeigt die Beschreibung seines Äußeren und Wesens (mürrisch, gutmütige Augen, seltenes Lächeln)?",
+    "keywords": [
+      "düster",
+      "mürrisch",
+      "gut",
+      "lächeln",
+      "unregel",
+      "spannung"
+    ],
+    "hint": "Formuliere die Differenz zwischen Eindruck und innerem Kern.",
+    "solution": "Joseph wirkt düster und unzugänglich (mürrischer Ausdruck, brütender Blick), doch seine Augen werden als eigentlich gutmütig beschrieben. Das erzeugt eine Spannung zwischen Oberfläche und innerem moralischem Kern: Er ist nicht liebenswürdig im Auftreten, aber verlässlich, klug und loyal."
+  },
+  {
+    "nr": 7,
+    "type": "free",
+    "prompt": "Josephs Satz „Frage einmal, ob sie dich für ebenbürtig halten“ – welche gesellschaftliche Diagnose steckt darin?",
+    "keywords": [
+      "ebenbürt",
+      "gesellschaft",
+      "ausgrenz",
+      "rang",
+      "jüdis",
+      "klasse"
+    ],
+    "hint": "Beziehe dich auf unsichtbare Hierarchien trotz Nähe/„Liebenswürdigkeit“.",
+    "solution": "Joseph benennt die strukturelle Ausgrenzung: Selbst wenn Menschen höflich sind, bleibt die Frage der Gleichrangigkeit (Religion/Stand) entscheidend. Er warnt vor falscher Anerkennung, die bei Bedarf in Abwertung umschlägt – eine Diagnose bürgerlicher Hierarchie- und Antisemitismusstrukturen."
+  },
+  {
+    "nr": 8,
+    "type": "free",
+    "prompt": "Reinhard als Lehrer: Wie unterscheiden sich Jennys und Theresens Lernhaltungen im Unterricht?",
+    "keywords": [
+      "therese",
+      "ruhig",
+      "still",
+      "mühsam",
+      "jenny",
+      "schnell",
+      "unruhig"
+    ],
+    "hint": "Kontrast: schnell erfassen vs. sorgsam erwerben – und was bleibt.",
+    "solution": "Jenny erfasst schnell und sprunghaft, strebt ständig nach Neuem und achtet den Besitz kaum, sobald er ihr gehört. Therese arbeitet langsam, sorgfältig und macht Wissen zu einem „mühsam erworbenen Gut“, das sie behält und wertschätzt. Der Unterricht zeigt Temperamente und unterschiedliche Bildungsformen."
+  },
+  {
+    "nr": 9,
+    "type": "free",
+    "prompt": "Faust/Gretchen-Stelle im Unterricht: Welche Funktion hat diese Szene für Reinhards Beziehung zu Jenny?",
+    "keywords": [
+      "faust",
+      "gretchen",
+      "hände",
+      "berühr",
+      "begeister",
+      "trän"
+    ],
+    "hint": "Es geht um emotionale Nähe, religiöse Fragen und einen Moment körperlicher Grenzüberschreitung.",
+    "solution": "Die gemeinsame Lektüre steigert Reinhards emotionale Bindung; Jennys Ergriffenheit und Dank (Händereichen) erzeugen einen Moment intimer Nähe. Reinhard reagiert impulsiv (schließt ihre Hände warm ein) und bereut kurz darauf – die Szene markiert den Übergang von Unterricht zu gefährlicher, nicht kontrollierbarer Leidenschaft."
+  },
+  {
+    "nr": 10,
+    "type": "free",
+    "prompt": "Warum kommt Reinhard nach dieser Stunde zur Erkenntnis, dass Jenny „aller religiösen Begriffe entbehrt“ – und wie erklärt der Text Jennys Haltung?",
+    "keywords": [
+      "religion",
+      "judentum",
+      "christentum",
+      "zweifel",
+      "ritual",
+      "dogmen"
+    ],
+    "hint": "Achte auf Familie: Loslösung von Ritualgesetzen und generelle Dogmenkritik.",
+    "solution": "Jenny wächst in einem Umfeld auf, das jüdische Ritualgesetze hinter sich gelassen hat und Dogmen beider Religionen skeptisch betrachtet. Deshalb fehlt ihr Reinhards Verständnis von „positiver geoffenbarter Religion“. Sie empfindet Glauben, wo er ihr begegnet, sogar mitleidig als geistige Schwäche – ein zentraler Konflikt mit Reinhards Frömmigkeit."
+  },
+  {
+    "nr": 11,
+    "type": "free",
+    "prompt": "Was zeigt die geplante/gedachte Konversion Jennys zum Christentum über ihre seelische Lage und ihre Strategie im Liebeskonflikt?",
+    "keywords": [
+      "übertritt",
+      "christentum",
+      "beweis",
+      "liebe",
+      "unruhe",
+      "reinhard"
+    ],
+    "hint": "„überzeugender Beweis ihrer Liebe“ – und „furchtbarste Unruhe“.",
+    "solution": "Die Konversion ist weniger theologischer Wandel als Liebesstrategie: Jenny will Reinhards Zweifel beenden, die sie dem Glaubensunterschied zuschreibt, und ihm einen radikalen Beweis ihrer Hingabe liefern. Zugleich zeigt der Plan ihre innere Unruhe und die Bereitschaft, Identität/Familientradition als Lösungsmittel im Konflikt einzusetzen."
+  },
+  {
+    "nr": 12,
+    "type": "free",
+    "prompt": "Thereses Reaktion auf Jennys Konversionsabsicht: Was verrät ihre Begeisterung über ihre Religiosität und über ihre Beziehung zu Jenny?",
+    "keywords": [
+      "therese",
+      "tränen",
+      "freude",
+      "abendmahl",
+      "himmelsfrieden",
+      "glaube"
+    ],
+    "hint": "Therese stellt sich „Segen“ und „Ruhe“ vor – warum ist das für Jenny attraktiv?",
+    "solution": "Therese ist tief religiös; sie verbindet Kirche/Abendmahl mit Frieden, Ruhe und „Himmelsfrieden“. Ihre Tränen zeigen missionarische Freude und den Wunsch nach Gemeinschaft im gleichen Glauben. Für Jenny wirkt diese religiöse Ruhe verlockend, weil sie selbst in heftiger Unruhe ist – Therese wird so zur emotionalen Verstärkerin des Plans."
+  },
+  {
+    "nr": 13,
+    "type": "free",
+    "prompt": "Warum reagieren Jennys Eltern zunächst gelassen auf die Konversionsidee – und warum sieht Joseph die Sache anders?",
+    "keywords": [
+      "eltern",
+      "leicht",
+      "enthusias",
+      "aufwall",
+      "joseph",
+      "triebfed"
+    ],
+    "hint": "Eltern: gewöhnt an Enthusiasmus. Joseph: kennt Motive/Interessen.",
+    "solution": "Die Eltern halten den Plan für eine vorübergehende enthusiastische Aufwallung, wie sie Jenny öfter zeigt. Joseph hingegen erkennt die „geheimen Triebfedern“ (Liebeskonflikt, Beweisstrategie) und hat ein doppeltes Interesse, die Entwicklung zu verhindern – aus Sorge um Jenny und aus eigener emotionaler Verstrickung."
+  },
+  {
+    "nr": 14,
+    "type": "free",
+    "prompt": "Wie wird Eduard als Bruderfigur zugleich „Vater“ und „Bruder“ für Jenny – und welche Folgen hat das für Jennys Autonomie?",
+    "keywords": [
+      "vater",
+      "bruder",
+      "zärtlich",
+      "beschütz",
+      "lehrer",
+      "autonomie"
+    ],
+    "hint": "Achte auf Formulierung: „Zärtlichkeit … ebensoviel von der Liebe eines Vaters als eines Bruders“.",
+    "solution": "Eduard schützt Jenny, bildet sie und begleitet sie emotional; seine Zärtlichkeit ist zugleich fürsorglich (väterlich) und gleichrangig (brüderlich). Das stärkt Jenny, kann aber auch Abhängigkeit erzeugen: Ihre Autonomie entwickelt sich im Spannungsfeld von Förderung und starker familiärer Bindung."
+  },
+  {
+    "nr": 15,
+    "type": "free",
+    "prompt": "Welche Bedeutung hat die Figur Reinhard im Roman: eher religiöser Prüfstein, Liebesideal oder gesellschaftliches Tor – und warum?",
+    "keywords": [
+      "reinhard",
+      "pfarrer",
+      "religion",
+      "liebe",
+      "prüfung",
+      "gesellschaft"
+    ],
+    "hint": "Verbinde Unterricht, Glaubenskonflikt und soziale Anerkennung.",
+    "solution": "Reinhard bündelt mehrere Funktionen: Als (später) Pfarrer ist er religiöser Prüfstein; als Geliebter ist er Ideal und Konfliktmotor; zugleich steht er für gesellschaftliche Anerkennung jenseits jüdischer Herkunft. Gerade diese Überlagerung macht ihn zum zentralen Katalysator für Jennys Selbstprüfung."
+  },
+  {
+    "nr": 16,
+    "type": "free",
+    "prompt": "Reinhards Frage an Joseph („Wie stehen Sie zu Jenny?“): Was zeigt diese Szene über Eifersucht, Anstand und die Bedeutung von „Achtung“?",
+    "keywords": [
+      "eifersucht",
+      "achtung",
+      "zudring",
+      "anstand",
+      "joseph",
+      "braut"
+    ],
+    "hint": "Joseph weist ihn zurecht, weil er Jennys Achtung verletzen könnte.",
+    "solution": "Reinhard verliert in Eifersucht Maßstäbe und überschreitet Grenzen. Joseph antwortet sachlich und erinnert ihn an die nötige Achtung gegenüber Jenny. Die Szene stellt bürgerlichen Anstand (Respekt, nicht über Frauen verfügen) gegen männliche Besitzlogik – und zeigt, wie gefährlich Eifersucht als Handlungsmotor ist."
+  },
+  {
+    "nr": 17,
+    "type": "free",
+    "prompt": "Welche Rolle spielt Joseph in der Szene, in der Reinhard eine „Szene“ beobachtet und daraus Schlüsse zieht?",
+    "keywords": [
+      "joseph",
+      "ruhe",
+      "schutz",
+      "abgrenz",
+      "auskunft",
+      "gedanken"
+    ],
+    "hint": "Joseph bleibt ruhig, verweigert Auskunft und schützt Jenny.",
+    "solution": "Joseph fungiert als Schutz- und Ordnungsmacht: Er bleibt ruhig, nimmt Reinhard die Deutungsmacht, verweigert intime Auskunft und insistiert auf Respekt. Gleichzeitig zeigt sein gedankenschweres Umhergehen, dass er selbst emotional betroffen ist – Loyalität und innerer Schmerz fallen zusammen."
+  },
+  {
+    "nr": 18,
+    "type": "free",
+    "prompt": "Was zeigt die Episode um das Treibhaus (Kamelien, Azalien, Hyazinthen) über bürgerliche Repräsentation und den „Blick“ auf das Meiersche Haus?",
+    "keywords": [
+      "treibhaus",
+      "repräsent",
+      "schätze",
+      "bewunder",
+      "besuch",
+      "bürger"
+    ],
+    "hint": "Ein Treibhaus ist Luxus, Kultur und „Besitz“ – wer darf staunen, wer bewertet?",
+    "solution": "Das Treibhaus ist Symbol bürgerlichen Reichtums und kultureller Distinktion: exotische Pflanzen als Statuszeichen. Der Besuch wird zum sozialen Ritual, in dem Anerkennung ausgesprochen, aber auch kontrolliert wird (Kommerzienrätin beunruhigt über Williams Besuche). Das Haus wird zum Schauplatz sozialer Bewertung."
+  },
+  {
+    "nr": 19,
+    "type": "free",
+    "prompt": "Claras Besuch: Welche Wirkung hat die Beschreibung ihres Aussehens und ihrer „Demut“ auf die Dynamik zwischen ihr, Eduard und Jennys Familie?",
+    "keywords": [
+      "clara",
+      "demut",
+      "mild",
+      "schön",
+      "gefallen",
+      "auserwählte"
+    ],
+    "hint": "Beachte: Wunsch zu gefallen + kindliche Bewunderung des Hauses.",
+    "solution": "Claras Erscheinung und demütiger Ton erzeugen sofort Sympathie; sie erscheint als idealisierte, „passende“ Partnerin für Eduard. Ihre Bewunderung der häuslichen „Schätze“ integriert sie ins bürgerliche Familienideal – zugleich konfrontiert sie Jenny mit einer weiblichen Rolle (Anpassung/Anmut), die Jenny ambivalent gegenübersteht."
+  },
+  {
+    "nr": 20,
+    "type": "free",
+    "prompt": "Frau von Meining: Welche Bedeutung hat diese Freundin für Jenny (Vertrauen, moralischer Wert) – und warum entsteht dadurch Spannung mit Graf Walter?",
+    "keywords": [
+      "frau von meining",
+      "vertrauen",
+      "sittlich",
+      "gesellschaft",
+      "abwesen",
+      "walter"
+    ],
+    "hint": "Jenny verbringt Zeit dort; Walter empfindet das als Zumutung/Verlust.",
+    "solution": "Frau von Meining bietet Jenny einen intimen Vertrauensraum und moralische Orientierung. Jennys häufige Abwesenheit irritiert Graf Walter, der soziale Verfügbarkeit/Präsenz erwartet und Besitzansprüche andeutet. So prallen Freundschaftliche Selbstbestimmung und männlich-bürgerliche Erwartung an „Tochter“/„Gesellschaftsdame“ aufeinander."
+  },
+  {
+    "nr": 21,
+    "type": "free",
+    "prompt": "Welche Vorzeichen einer „neuen Epoche“ empfindet Graf Walter, als Jenny lange bei der Geheimrätin bleibt – und wie deutet der Text diese Unruhe?",
+    "keywords": [
+      "walter",
+      "spannung",
+      "erwart",
+      "neue epoche",
+      "sehnsucht",
+      "unruh"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Walters innere Spannung wirkt wie Vorahnung: Er fühlt sich am Vorabend einer Lebenswende, ohne den Grund klar zu benennen. Der Text deutet eine emotionale Verstrickung und eine kommende Zuspitzung an – Walters Begehren und sein Anspruch auf Jennys Präsenz stehen im Raum, während Jenny sich gerade bewusst einem anderen sozialen und moralischen Bezugspunkt (der Geheimrätin) zuwendet. Die Unruhe ist damit psychologisch (Eifersucht/Unklarheit) und sozial (Erwartung an weibliche Verfügbarkeit) motiviert."
+  },
+  {
+    "nr": 22,
+    "type": "free",
+    "prompt": "Welche Rolle spielt Eduard im Familienhaushalt (Praxis, gesellschaftliche Vermittlung) und wie zeigt sich seine emotionale Betroffenheit in Liebesfragen?",
+    "keywords": [
+      "eduard",
+      "praxis",
+      "ungeduld",
+      "liebe",
+      "kampf",
+      "gewissen"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Eduard ist beruflich eingebunden (Praxis), zugleich Vermittler zwischen Familie und Außenwelt. Seine Ungeduld und sein innerer Kampf (Liebe vs. Gewissen) zeigen, dass bürgerliche Lebensführung nicht nur rational ist: Gefühle, Standesfragen und moralische Verpflichtung kollidieren."
+  },
+  {
+    "nr": 23,
+    "type": "free",
+    "prompt": "Warum ist Joseph im Meierschen Haus zugleich Familienmitglied und (geplanter) Geschäftspartner – und welche Machtlogik steckt darin?",
+    "keywords": [
+      "compagnon",
+      "geschäft",
+      "mitgift",
+      "onkel",
+      "haus",
+      "bindung"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Joseph soll als Compagnon ins Geschäft eintreten; Wohnen und Ökonomie werden verknüpft. Das bindet ihn institutionell an die Familie und macht Loyalität materiell. Die Machtlogik: Zugehörigkeit wird über ökonomische Einbindung stabilisiert – und persönliche Beziehungen werden zugleich strategisch organisiert."
+  },
+  {
+    "nr": 24,
+    "type": "free",
+    "prompt": "Die Verlobung Jenny–Reinhard: Was macht das Glück der Verlobten so „unbeschreiblich“ – und welche Schatten liegen trotzdem darüber?",
+    "keywords": [
+      "verlobung",
+      "glück",
+      "freude",
+      "sehnsucht",
+      "wehmütig",
+      "kampf"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Das Glück erscheint total (hingebende Freude Jennys, Versöhnung des Vaters, enger Kreis). Gleichzeitig bleiben Schatten: Joseph muss seinen Schmerz disziplinieren, Eduard wird wehmütig und kämpft erneut mit Liebe/Gewissen. Das Glück ist sozial inszeniert, aber psychologisch nicht konfliktfrei."
+  },
+  {
+    "nr": 25,
+    "type": "free",
+    "prompt": "Wie zeigt Josephs Satz an Reinhard („Machen Sie Jenny so glücklich…“) moralische Größe – und welche Selbstdisziplin steckt darin?",
+    "keywords": [
+      "joseph",
+      "edel",
+      "sinn",
+      "unrecht",
+      "bedauern",
+      "disziplin"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Joseph will kein Leid sichtbar machen und die Freude der anderen nicht trüben. Er diszipliniert sein eigenes Begehren/Bedauern und formuliert eine ethische Bedingung: Wenn Jenny glücklich ist, gibt es nichts zu beklagen. Das ist moralische Größe, aber auch schmerzvolle Selbstunterdrückung."
+  },
+  {
+    "nr": 26,
+    "type": "free",
+    "prompt": "Warum wirkt Therese bei der Verlobung „sonderbar“ und „altklug“ – und was sagt das über ihr Selbstbild?",
+    "keywords": [
+      "therese",
+      "beschützerin",
+      "altklug",
+      "lachen",
+      "werk",
+      "selbstbild"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Therese sieht Jennys Glück als ihr Werk und nimmt die Rolle der Beschützerin an. Ihre altkluge Art zeigt den Wunsch nach Bedeutung und Einfluss. Gleichzeitig entlarvt das Lachen der anderen, dass sie diese Selbstaufwertung als übertrieben wahrnehmen."
+  },
+  {
+    "nr": 27,
+    "type": "free",
+    "prompt": "Eduards „Kampf“: Welche Konfliktpole stehen sich in ihm gegenüber, als Jenny sich verlobt?",
+    "keywords": [
+      "eduard",
+      "kampf",
+      "liebe",
+      "gewissen",
+      "befriedigung",
+      "sehn"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Eduard erlebt Sehnsucht nach eigenem Glück, zugleich moralische/soziale Hemmungen. Liebe und Gewissen führen einen inneren Krieg: Er will Nähe und Erfüllung, aber steht unter Normen, Loyalitäten und Selbstansprüchen, die ihn begrenzen."
+  },
+  {
+    "nr": 28,
+    "type": "free",
+    "prompt": "Warum ist die Erinnerung an Reinhard für Jenny nach der Rückkehr (Jahre später) weiterhin wirksam, obwohl sie sich „zufrieden und glücklich“ nennt?",
+    "keywords": [
+      "erinnerung",
+      "reinhard",
+      "zufrieden",
+      "glücklich",
+      "unmöglich",
+      "liebe"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Jenny erklärt sich als zufrieden durch Familie/Liebe/Schonung, doch die Erinnerung an Reinhard bleibt als Maßstab. Ihre Weigerung zu heiraten zeigt, dass Zufriedenheit nicht Gleichgültigkeit ist: Ohne Liebe will sie keine Ehe – Reinhard bleibt innerer Referenzpunkt."
+  },
+  {
+    "nr": 29,
+    "type": "free",
+    "prompt": "Welche Bedeutung hat der plötzliche Tod der Mutter für die Familienstruktur und für Jennys Lebensweg?",
+    "keywords": [
+      "tod",
+      "mutter",
+      "verlust",
+      "eng",
+      "verbunden",
+      "lücke"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Der Tod schließt die Familie noch enger zusammen; jede Person versucht die Lücke zu füllen. Für Jenny bedeutet das: Noch stärkere Bindung und zugleich eine neue existenzielle Erschütterung, die Zukunftsfragen verschärft (Heirat, Selbstständigkeit, Verantwortung)."
+  },
+  {
+    "nr": 30,
+    "type": "free",
+    "prompt": "Wie wird das Verhältnis Jenny–Joseph später (‚geliebter Bruder, zweiter Eduard‘) neu definiert – und welche Blindheit zeigt Jenny dabei?",
+    "keywords": [
+      "jenny",
+      "joseph",
+      "bruder",
+      "vertrauen",
+      "schmerz",
+      "blind"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Jenny will Joseph als Bruderfigur festschreiben und bietet Vertrauen ‚wie einem Manne‘ an. Sie übersieht jedoch seinen ‚wahren Schmerz‘ und liest seine stille Ruhe nicht richtig. Die Neu-Definition ist für Joseph zugleich Aufwertung und Verlust (Romantik/Begehren muss schweigen)."
+  },
+  {
+    "nr": 31,
+    "type": "free",
+    "prompt": "Was zeigt Jennys Unzufriedenheit, als Joseph knapp antwortet („So sei es“), über ihre Erwartung an emotionale Resonanz?",
+    "keywords": [
+      "unzufrieden",
+      "antwort",
+      "aufregung",
+      "resonanz",
+      "erwartung",
+      "ruhe"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Jenny sucht Aufregung und expressive Bestätigung; Joseph meidet Aufregung und bleibt knapp. Ihre Unzufriedenheit zeigt, wie sehr sie emotionale Spiegelung erwartet – und wie schwer ihr Josephs stille Kommunikationsform fällt."
+  },
+  {
+    "nr": 32,
+    "type": "free",
+    "prompt": "Welche Funktion hat die Figur Steinheim (viele literarische Arbeiten, nie fertig) als Kommentar auf bürgerliche Kultur und Männlichkeit?",
+    "keywords": [
+      "steinheim",
+      "literarisch",
+      "unsterblich",
+      "ruh",
+      "faul",
+      "kommentar"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Steinheim karikiert das männliche Genie-Gerede: viele Projekte, große Versprechen, wenig Disziplin. Der Roman kommentiert damit bürgerliche Kulturpose und die Kluft zwischen Anspruch und Arbeit – eine ironische Spiegelung kultureller Männlichkeitsinszenierung."
+  },
+  {
+    "nr": 33,
+    "type": "free",
+    "prompt": "Jenny empfindet Einsamkeit als „unerträglich“: Welche Bedürfnisse und Gefahren werden damit sichtbar?",
+    "keywords": [
+      "einsamkeit",
+      "unerträglich",
+      "lebhaft",
+      "gepeinigt",
+      "entschluss",
+      "gefahr"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Jennys Lebhaftigkeit verlangt Austausch, Bewegung, Sinn. Einsamkeit verstärkt Grübeln und Drang zu radikalen Lösungen (Konversion). Bedürfnis nach Beziehung kann so in riskante Selbstinstrumentalisierung kippen."
+  },
+  {
+    "nr": 34,
+    "type": "free",
+    "prompt": "Wie verknüpft der Roman Liebe und Religionszugehörigkeit, ohne Religion auf bloße Kulisse zu reduzieren?",
+    "keywords": [
+      "liebe",
+      "religion",
+      "glaube",
+      "identität",
+      "konflikt",
+      "begründung"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Religion ist nicht nur Kulisse: Sie strukturiert Anerkennung, Ehefähigkeit, Gewissen und Selbstbild. Liebe wird durch religiöse Differenz geprüft; zugleich zeigt der Text, dass religiöse Praxis/Überzeugung realen seelischen Halt geben kann (Therese), während Jenny dogmatisch skeptisch bleibt."
+  },
+  {
+    "nr": 35,
+    "type": "free",
+    "prompt": "Warum beschreibt der Text Jennys Bildung als ‚in ihr liegend‘ (nur erinnern) – und welche Romantik/Genie-Idee wird damit aufgerufen oder kritisiert?",
+    "keywords": [
+      "bildung",
+      "spielend",
+      "verständnis",
+      "kenntnisse",
+      "genie",
+      "kritik"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Die Metapher, Wissen liege schon in ihr, ruft Genie-Ideen auf: natürliche Begabung, spontane Erkenntnis. Zugleich kann das kritisch wirken: Jenny arbeitet weniger an Vertiefung, jagt Neuem nach – Talent ersetzt nicht unbedingt Reife und Stabilität."
+  },
+  {
+    "nr": 36,
+    "type": "free",
+    "prompt": "Welche sozialen Räume sind im Roman besonders wichtig (Theater/Restaurant, Haus, Unterrichtszimmer, Treibhaus, Kurort/Baden) – und wofür stehen sie jeweils?",
+    "keywords": [
+      "räume",
+      "theater",
+      "haus",
+      "unterricht",
+      "treibhaus",
+      "baden"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Theater/Restaurant: Öffentlichkeit, Blick, Vorurteil. Haus: Familie, Schutz, Kontrolle. Unterricht: Bildung, Intimität, Grenzverschiebung. Treibhaus: Status, Repräsentation, soziale Prüfung. Baden/Kurort: Übergang, neue Bekanntschaften, emotionale Zuspitzung."
+  },
+  {
+    "nr": 37,
+    "type": "free",
+    "prompt": "Welche Rolle spielt Sprache (Witz, Schlagfertigkeit, Beredtsamkeit) als soziale Ressource bei Jenny, Eduard und Joseph?",
+    "keywords": [
+      "witz",
+      "beredtsamkeit",
+      "sprache",
+      "ressource",
+      "kurz",
+      "abgebrochen"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Jenny besitzt schlagenden Witz; Eduard ist beredt und gesellschaftlich gewandt; Joseph spricht kurz und abgebrochen. Sprache wird zur Ressource sozialer Macht: Sie entscheidet über Wirkung, Anschlussfähigkeit und Missverständnisse – Josephs moralische Tiefe wirkt weniger ‚charmant‘, aber substanziell."
+  },
+  {
+    "nr": 38,
+    "type": "free",
+    "prompt": "Inwiefern zeigt die Szene, in der Jenny Joseph „Störenfried“ nennt, familiäre Umgangsformen und Machtspiele?",
+    "keywords": [
+      "störenfried",
+      "kaffee",
+      "brummen",
+      "umgang",
+      "mächt",
+      "ironie"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Die Szene zeigt familiäre Vertrautheit, aber auch Hierarchie: Jenny nutzt Ironie, um Joseph zu markieren und zu kontrollieren (er soll nicht ‚brummen‘). Joseph stört mit Wahrheiten; die Familie reagiert genervt – Machtspiele laufen über Ton und Rollenverteilung."
+  },
+  {
+    "nr": 39,
+    "type": "free",
+    "prompt": "Wie wird aus dem individuellen Konflikt (Jenny/Reinhard) ein gesellschaftlicher Konflikt (Anerkennung, Ebenbürtigkeit, Religion, Klasse)?",
+    "keywords": [
+      "individuell",
+      "gesellschaft",
+      "anerkennung",
+      "ebenbürtigkeit",
+      "klasse",
+      "religion"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Die Liebesbeziehung ist von Anfang an in gesellschaftliche Strukturen eingebettet: Fragen nach Ebenbürtigkeit, religiöser Zugehörigkeit, Ruf und Akzeptanz bestimmen, was als möglich gilt. So wird Privatheit politisch: Liebe wird zum Prüfstein der Gesellschaft."
+  },
+  {
+    "nr": 40,
+    "type": "free",
+    "prompt": "Welche Bedeutung hat das Motiv „Schutz“ im Roman (Eduard als Beschützer, Joseph als Grenze, Familie als Kreis) – und wo kippt Schutz in Kontrolle?",
+    "keywords": [
+      "schutz",
+      "beschützer",
+      "grenze",
+      "kontrolle",
+      "kreis",
+      "drängen"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Schutz zeigt sich als Fürsorge und Loyalität. Doch er kann kippen: Eltern drängen Richtung Heirat; Joseph setzt Grenzen; Walter will Verfügbarkeit. Schutz wird dann Kontrolle, wenn er Jennys Entscheidungshoheit ersetzt oder ihre Beweglichkeit sozial sanktioniert."
+  },
+  {
+    "nr": 41,
+    "type": "free",
+    "prompt": "Wie wird der Konflikt zwischen Gefühl („Wonne“, Tränen) und Norm (Anstand, Achtung, Ebenbürtigkeit) dramatisiert?",
+    "keywords": [
+      "gefühl",
+      "norm",
+      "achtung",
+      "anstand",
+      "trän",
+      "wonne"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Starke Gefühle brechen in Unterricht/Liebe hervor, während Normen Grenzen setzen: Reinhard bereut die Berührung, Joseph fordert Achtung, Gesellschaft fragt nach Rang. Dramatisierung entsteht aus der ständigen Kollision von innerer Bewegung und äußerer Regel."
+  },
+  {
+    "nr": 42,
+    "type": "free",
+    "prompt": "Warum ist der Satz „Name ist Schall und Rauch…“ im Kontext der Religionsdebatte zwischen Reinhard und Jenny besonders brisant?",
+    "keywords": [
+      "name",
+      "schall",
+      "rauch",
+      "glaube",
+      "begriff",
+      "brisan"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Die Stelle betont Unbenennbarkeit von Gefühl/Transzendenz; Jenny reagiert emotional, obwohl sie religiöse Begriffe ablehnt. Das ist brisant: Der Text zeigt, dass Jenny spirituell/ethisch empfänglich ist, aber Dogmen verweigert – ein Kern des Konflikts mit Reinhards Religionsverständnis."
+  },
+  {
+    "nr": 43,
+    "type": "free",
+    "prompt": "Welche Rolle spielt „Beobachtung“ im Roman (Jenny hat ‚nicht Beobachtung genug‘, um Josephs Schmerz zu lesen) – und was sagt das über Reife?",
+    "keywords": [
+      "beobachtung",
+      "schmerz",
+      "lesen",
+      "reife",
+      "blind",
+      "entwicklung"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Beobachtung wird als Reifekriterium markiert: Jenny ist intelligent, aber in emotionaler Wahrnehmung teilweise blind. Der Roman trennt kognitive Begabung von empathischer Reife und zeigt Lernprozesse im Zwischenmenschlichen."
+  },
+  {
+    "nr": 44,
+    "type": "free",
+    "prompt": "Warum ist die Vorstellung, Jenny könne in einem Haus ohne Liebe glücklich sein, für sie unmöglich – und welche Ehe-Norm kritisiert der Roman damit?",
+    "keywords": [
+      "ehe",
+      "ohne liebe",
+      "unmöglich",
+      "zwang",
+      "konvention",
+      "kritik"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Jenny erklärt, sie würde in einer Ehe ohne Liebe nicht das finden, was sie im Elternhaus hat. Damit kritisiert der Roman Versorgungsehen und Zwangslogik: Ehe soll nicht nur sozialer Vertrag sein, sondern eine Beziehung, die Würde und Gefühl respektiert."
+  },
+  {
+    "nr": 45,
+    "type": "free",
+    "prompt": "Welche Bedeutung hat die Figur Therese als Gegenmodell zu Jenny (Religiosität, Lernstil, Selbstbild) – und wo werden sie dennoch verbunden?",
+    "keywords": [
+      "therese",
+      "gegenmodell",
+      "religios",
+      "ruhig",
+      "freundschaft",
+      "verbunden"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Therese ist ruhig, fromm, sorgfältig – ein Gegenmodell zu Jennys sprunghafter Intensität und Skepsis. Verbunden bleiben sie durch Freundschaft, gemeinsame Bildungsräume und die Tatsache, dass Therese Jennys Entscheidungen emotional begleitet und beeinflusst."
+  },
+  {
+    "nr": 46,
+    "type": "free",
+    "prompt": "Wie zeigt der Roman an mehreren Stellen, dass Antisemitismus nicht nur persönliche Abneigung, sondern strukturelle Logik ist?",
+    "keywords": [
+      "antisemitismus",
+      "struktur",
+      "logik",
+      "ebenbürtigkeit",
+      "gesellschaft",
+      "antipathie"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Horns „angeborene Antipathie“, die Frage nach Ebenbürtigkeit, das gleichzeitige Profitieren von Meiers Hilfe und die schnelle Abwertung: Das sind strukturhafte Muster. Antisemitismus erscheint als normalisierte soziale Grammatik, die Zugehörigkeit reguliert."
+  },
+  {
+    "nr": 47,
+    "type": "free",
+    "prompt": "Welche Funktion hat die Szene der Männerberatung (Onkel, Eduard, Joseph) über Josephs Zukunft im Haus – im Verhältnis zu Jennys Handlungsmacht?",
+    "keywords": [
+      "männer",
+      "beratung",
+      "zukunft",
+      "mitgift",
+      "plan",
+      "handlungsmacht"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Die Männer verhandeln Besitz, Wohnen und Zukunft – Jenny erscheint dabei als Objekt von Plänen (Mitgift, Wohnarrangements). Das zeigt patriarchale Struktur: weibliche Lebenswege werden in männlichen Aushandlungsräumen organisatorisch mitentschieden, selbst wenn Jenny emotional im Zentrum steht."
+  },
+  {
+    "nr": 48,
+    "type": "free",
+    "prompt": "Warum ist Josephs Schweigen/Knappheit („So sei es“) nicht Gleichgültigkeit, sondern eine Form von Selbstschutz – und welche Kosten hat das?",
+    "keywords": [
+      "schweigen",
+      "selbstschutz",
+      "schmerz",
+      "disziplin",
+      "kosten",
+      "ruhe"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Josephs Knappheit schützt vor emotionaler Eskalation; er meidet Aufregung. Aber die Kosten sind hoch: Sein Schmerz bleibt unsichtbar, er wird missverstanden, und seine Bedürfnisse finden keinen Ausdruck – Disziplin wird zur inneren Einsamkeit."
+  },
+  {
+    "nr": 49,
+    "type": "free",
+    "prompt": "Welche Rolle spielt das Motiv „Zeit“ (Monde, Jahre, Rückkehr, Zukunft erwarten) für die Darstellung von Hoffnung und Verdrängung?",
+    "keywords": [
+      "zeit",
+      "jahre",
+      "zukunft",
+      "erwarten",
+      "erinnerung",
+      "verdrängen"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Zeit strukturiert Hoffnung (man wartet, dass Erinnerung nachlässt) und Verdrängung (man verschiebt Konflikte). Der Roman zeigt, dass Zeit nicht automatisch löst: Erinnerung bleibt wirksam, und gesellschaftliche Strukturen ändern sich nicht einfach durch Vergehen von Jahren."
+  },
+  {
+    "nr": 50,
+    "type": "free",
+    "prompt": "Warum ist „Jenny“ als Roman des Vormärz zu lesen – inwiefern werden private Entscheidungen als politisch sichtbar?",
+    "keywords": [
+      "vormärz",
+      "politisch",
+      "privat",
+      "gesellschaft",
+      "emanzipation",
+      "ausgrenzung"
+    ],
+    "hint": "Nutze zentrale Begriffe aus dem Text und verbinde Handlung mit gesellschaftlicher Bedeutung.",
+    "solution": "Der Roman macht sichtbar, dass Liebe, Heirat, Bildung und Religionszugehörigkeit politisch sind: Sie betreffen Rechte, Anerkennung, Ausgrenzung und Geschlechterordnung. Jennys Entscheidungen werden vor dem Hintergrund gesellschaftlicher Hierarchien getroffen – das Private wird als politisches Feld erzählt."
+  }
+];
+
+    function normalizeText(s) {
+      return (s || "")
+        .toLowerCase()
+        .normalize("NFD").replace(/\p{Diacritic}/gu, "")
+        .replace(/[^a-z0-9\s]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+    }
+
+    function scoreAnswer(answer, keywords) {
+      const a = normalizeText(answer);
+      if (!a) return 0;
+      let hits = 0;
+      for (const kw of keywords) {
+        const k = normalizeText(kw);
+        if (!k) continue;
+        const escaped = k.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        const re = new RegExp(`\\b${escaped}\\b`, "i");
+        if (re.test(a) || a.includes(k)) hits++;
+      }
+      return hits;
+    }
+
+    function requiredHitsCount(keywords) {
+      const n = (keywords || []).length;
+      if (n <= 2) return 1;
+      if (n <= 4) return 2;
+      if (n <= 6) return 3;
+      return 4;
+    }
+
+    function setMeta(done, total) {
+      const pct = Math.round((done / total) * 100);
+      document.getElementById("quizMeta").textContent =
+        `Erledigt: ${done}/${total} (${pct}%). Tipp: Antworte in ganzen Sätzen und nutze zentrale Begriffe aus Text + Kontext.`;
+    }
+
+    function saveState(state) { localStorage.setItem("jenny_quiz_state_v1", JSON.stringify(state)); }
+    function loadState() {
+      try {
+        const raw = localStorage.getItem("jenny_quiz_state_v1");
+        if (!raw) return null;
+        return JSON.parse(raw);
+      } catch(e) { return null; }
+    }
+
+    function buildInitialState() {
+      const st = {};
+      for (const q of QUESTIONS) {
+        st[q.nr] = { attempts: 0, done: false, answer: "", locked: false, expanded: false };
+      }
+      return st;
+    }
+
+    function scrollToId(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function renderQuiz() {
+      const wrap = document.getElementById("quizWrap");
+      wrap.innerHTML = "";
+
+      let state = loadState();
+      if (!state) state = buildInitialState();
+
+      for (const q of QUESTIONS) {
+        if (!state[q.nr]) state[q.nr] = { attempts: 0, done: false, answer: "", locked: false, expanded: false };
+      }
+
+      let doneCount = 0;
+
+      for (const q of QUESTIONS) {
+        if (state[q.nr].done) doneCount++;
+
+        const card = document.createElement("div");
+        card.className = "qCard";
+        card.id = `q${q.nr}`;
+
+        const head = document.createElement("div");
+        head.className = "qHead";
+
+        const left = document.createElement("div");
+        left.innerHTML = `<div class="qNr">Frage ${q.nr}</div>`;
+
+        const right = document.createElement("div");
+        right.className = "attempt";
+        right.textContent = state[q.nr].done ? "✅ erledigt" : `Versuche: ${state[q.nr].attempts}/3`;
+
+        head.appendChild(left);
+        head.appendChild(right);
+
+        const prompt = document.createElement("div");
+        prompt.className = "qPrompt";
+        prompt.textContent = q.prompt;
+
+        const area = document.createElement("textarea");
+        area.placeholder = "Schreibe deine Antwort hier (ganze Sätze, Textbezug, zentrale Begriffe)…";
+        area.value = state[q.nr].answer || "";
+        area.disabled = !!state[q.nr].locked;
+
+        const actions = document.createElement("div");
+        actions.className = "qActions";
+
+        const btnCheck = document.createElement("button");
+        btnCheck.className = "btn primary";
+        btnCheck.type = "button";
+        btnCheck.textContent = "Antwort prüfen";
+        btnCheck.disabled = !!state[q.nr].locked;
+
+        const btnToggle = document.createElement("button");
+        btnToggle.className = "btn";
+        btnToggle.type = "button";
+        btnToggle.textContent = state[q.nr].expanded ? "Details einklappen" : "Details aufklappen";
+
+        actions.appendChild(btnCheck);
+        actions.appendChild(btnToggle);
+
+        const feedback = document.createElement("div");
+        feedback.className = "feedback";
+        feedback.id = `fb${q.nr}`;
+
+        const hint = document.createElement("div");
+        hint.className = "feedback hint";
+        hint.id = `hint${q.nr}`;
+        hint.style.display = "none";
+        hint.textContent = "Hinweis: " + q.hint;
+
+        const solution = document.createElement("div");
+        solution.className = "solution";
+        solution.id = `sol${q.nr}`;
+        solution.innerHTML =
+          `<div class="label">Musterlösung</div><div class="text">${String(q.solution).replace(/</g,"&lt;").replace(/>/g,"&gt;")}</div>`;
+
+        const detailsWrap = document.createElement("div");
+        detailsWrap.style.display = state[q.nr].expanded ? "block" : "none";
+        detailsWrap.style.marginTop = "10px";
+        detailsWrap.appendChild(hint);
+        detailsWrap.appendChild(solution);
+
+        function updateRightLabel() {
+          right.textContent = state[q.nr].done ? "✅ erledigt" : `Versuche: ${state[q.nr].attempts}/3`;
+        }
+
+        function markDone() {
+          state[q.nr].done = true;
+          state[q.nr].locked = true;
+          area.disabled = true;
+          btnCheck.disabled = true;
+          updateRightLabel();
+          card.style.borderColor = "rgba(52,211,153,0.35)";
+          card.style.background = "rgba(52,211,153,0.06)";
+        }
+
+        if (state[q.nr].done) {
+          card.style.borderColor = "rgba(52,211,153,0.35)";
+          card.style.background = "rgba(52,211,153,0.06)";
+        }
+
+        btnCheck.addEventListener("click", () => {
+          const ans = area.value || "";
+          state[q.nr].answer = ans;
+
+          if (state[q.nr].locked) { saveState(state); return; }
+
+          const hits = scoreAnswer(ans, q.keywords || []);
+          const need = requiredHitsCount(q.keywords || []);
+
+          state[q.nr].attempts = Math.min(3, (state[q.nr].attempts || 0) + 1);
+          updateRightLabel();
+
+          feedback.style.display = "block";
+
+          if (hits >= need) {
+            feedback.className = "feedback ok";
+            feedback.textContent = `Richtig ✅ (Treffer: ${hits}/${need}).`;
+            hint.style.display = "none";
+            solution.style.display = "none";
+            markDone();
+          } else {
+            if (state[q.nr].attempts === 1) {
+              feedback.className = "feedback bad";
+              feedback.textContent = `Falsch ❌ (Treffer: ${hits}/${need}). Versuche es noch einmal – beziehe dich stärker auf Text + Kontextbegriffe.`;
+            } else if (state[q.nr].attempts === 2) {
+              feedback.className = "feedback bad";
+              feedback.textContent = `Noch nicht ❌ (Treffer: ${hits}/${need}). Jetzt kommt ein Hinweis.`;
+              state[q.nr].expanded = true;
+              detailsWrap.style.display = "block";
+              btnToggle.textContent = "Details einklappen";
+              hint.style.display = "block";
+            } else {
+              feedback.className = "feedback bad";
+              feedback.textContent = `3. Versuch: Musterlösung wird eingeblendet. Lies sie sorgfältig und formuliere sie in eigenen Worten nach.`;
+              state[q.nr].expanded = true;
+              detailsWrap.style.display = "block";
+              btnToggle.textContent = "Details einklappen";
+              hint.style.display = "block";
+              solution.style.display = "block";
+              state[q.nr].locked = true;
+              area.disabled = true;
+              btnCheck.disabled = true;
+            }
+          }
+
+          saveState(state);
+          const doneNow = Object.values(state).filter(x => x.done).length;
+          setMeta(doneNow, QUESTIONS.length);
+        });
+
+        btnToggle.addEventListener("click", () => {
+          state[q.nr].expanded = !state[q.nr].expanded;
+          detailsWrap.style.display = state[q.nr].expanded ? "block" : "none";
+          btnToggle.textContent = state[q.nr].expanded ? "Details einklappen" : "Details aufklappen";
+          saveState(state);
+        });
+
+        card.appendChild(head);
+        card.appendChild(prompt);
+        card.appendChild(area);
+        card.appendChild(actions);
+        card.appendChild(feedback);
+        card.appendChild(detailsWrap);
+
+        wrap.appendChild(card);
+      }
+
+      setMeta(doneCount, QUESTIONS.length);
+
+      document.getElementById("btnExpandAll").onclick = () => {
+        const state = loadState() || buildInitialState();
+        for (const q of QUESTIONS) state[q.nr].expanded = true;
+        saveState(state);
+        renderQuiz();
+        scrollToId("modul-quiz");
+      };
+
+      document.getElementById("btnCollapseAll").onclick = () => {
+        const state = loadState() || buildInitialState();
+        for (const q of QUESTIONS) state[q.nr].expanded = false;
+        saveState(state);
+        renderQuiz();
+        scrollToId("modul-quiz");
+      };
+
+      document.getElementById("btnReset").onclick = () => {
+        if (!confirm("Reset wirklich durchführen? Alle Antworten & Versuche werden gelöscht.")) return;
+        localStorage.removeItem("jenny_quiz_state_v1");
+        renderQuiz();
+        scrollToId("modul-quiz");
+      };
+    }
+
+    renderQuiz();
+  </script>
+</body>
+</html>
