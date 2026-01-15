@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0b1220;
+  color: #eef2ff;
+}
+
+header {
+  padding: 2rem;
+}
+
+h1, h2, h3 {
+  margin-top: 0;
+}
+
+section {
+  padding: 2rem;
+}
+
+.roman-box {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: #f5f1e8;
+  color: #1a1a1a;
+  border-radius: 14px;
+}
+
+.pdf-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: #8b0000;
+  text-decoration: none;
+}
+
+audio {
+  width: 100%;
+  margin-top: 0.5rem;
+}
